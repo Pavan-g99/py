@@ -35,10 +35,11 @@ stages:
           # sh exit1
  - stage: stage2
    jobs:
-     - job: job1
+     - job: job2
+       condition: succeeded('A')
        steps: 
         - script: "echo job2 running"
-       condition: succeeded('A')
+       
    
 
           
