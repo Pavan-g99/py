@@ -17,7 +17,7 @@ pr:
    include:
      - "*"
 schedules:
-  - cron: "* 18 * * [1-5]"
+  - cron: "* 18 * * 1-5"
     branches:
      include:
        - master
