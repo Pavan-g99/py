@@ -33,20 +33,20 @@ stages:
    pool:
     vmImage: windows-latest
    jobs:
-    - job: job1
+    - job: "job1"
       steps:
        - script: |
            echo "this is job1"
         
  - stage: stage2
    jobs:
-     - job: job2
+     - job: "job2"
        condition: succeeded('job1')
        steps: 
         - script: "echo job2 running"
  - stage: "stage3"
    jobs:
-     - job:
+     - job: job3
        condition: and(succeeded('job2'), ${{parameters.boolen}})
        steps:
          - script: |
