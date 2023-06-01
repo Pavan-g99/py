@@ -24,7 +24,7 @@ stages:
  - stage: stage2
    jobs:
      - job: "job2"
-       condition: eq(variables.myvar,'ubuntu-latest')
+       condition: eq(${{parameters.mach}},'ubuntu-latest')
        steps: 
         - script: "echo job2 running"
  
