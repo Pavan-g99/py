@@ -21,6 +21,11 @@ schedules:
     branches:
      include:
        - master
+parameters:
+  - name: boolen
+    type: boolean
+    default: true
+  
 pool:
   vmImage: ubuntu-latest
 stages:
@@ -36,9 +41,19 @@ stages:
  - stage: stage2
    jobs:
      - job: job2
-       condition: succeeded('A')
+       condition: succeeded()
        steps: 
         - script: "echo job2 running"
+ - stage: "stage3"
+   jobs:
+     - job:
+       condition: and(succeeded('job2'), (${{parameter.boolen}}))
+       steps:
+         - script: |
+             echo "stage 3 with sucess or true or false"
+           
+       
+   
        
    
 
