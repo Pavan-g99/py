@@ -16,6 +16,21 @@ stages:
        steps:
        - script: |
           echo "Hello everyone"
+ - stage: stage3
+   displayName: "stag3 depends on one"
+   dependsOn: stage1
+   jobs:
+     - job: job3
+       steps:
+         - script: echo "stage 3 executed successfully"
+         - task: CmdLine@2
+           inputs:
+              script: |
+                echo Write your commands here
+                echo "stage 3 with task"
+             
+            
+        
           
    
 
