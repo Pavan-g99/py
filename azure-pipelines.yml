@@ -5,22 +5,26 @@
 
 
                          
-variables:
-- name: one
-  value: initialValue 
 
-steps:
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(one)
-    displayName: First variable pass
-  - bash: echo "[task.setvariable variable=one]secondValue"
-    displayName: Set new variable value
-  - script: |
-      echo ${{ variables.one }} # outputs initialValue
-      echo $(one) # outputs secondValue
-    displayName: Second variable pass
-           
+parameters:
+  - name: mach
+    type: string
+    default: ubuntu-latest
+    values:
+      - ubuntu-latest
+      - windows-latest
+      - mac
+  
+pool:
+  vmImage: ubuntu-latest
+stages: 
+ - stage: stage2
+   jobs:
+     - job: "job2"
+       condition: eq(${{parameters.mach}},ubuntu-latest)
+       steps: 
+        - script: "echo job2 running"
+ 
        
    
        
