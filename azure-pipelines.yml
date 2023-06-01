@@ -22,11 +22,11 @@ schedules:
      include:
        - master
 pool:
-  vm-image: ubuntu-latest
+  vmImage: ubuntu-latest
 stages:
  - stage: stage1
    pool:
-    vm-image: windows-latest
+    vmImage: windows-latest
    jobs:
     - job: job1
       steps:
