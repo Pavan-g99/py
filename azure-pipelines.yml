@@ -11,7 +11,7 @@ stages:
          - script: echo "job"
     
   - stage: stage2
-    condition: succeeded('stage1')
+    condition: always()
     jobs:
      - job:
        steps:
