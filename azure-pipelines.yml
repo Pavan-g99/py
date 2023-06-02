@@ -14,7 +14,7 @@ stages:
 
     
   - stage: stage2
-    condition: failed('job1')
+    condition: failed()
     jobs:
      - job: job2
        steps:
