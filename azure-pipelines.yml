@@ -11,7 +11,7 @@ stages:
          - script: echo "job"
     
   - stage: stage2
-    dependsOn: stage1
+    condition: succeeded('stage1')
     jobs:
      - job:
        steps:
