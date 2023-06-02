@@ -8,7 +8,9 @@ stages:
     jobs:
      - job: job1
        steps:
-         - script: exit 1
+        - task: Maven@4
+          inputs:
+            mavenPomFile: 'pom.xml'
 
     
   - stage: stage2
