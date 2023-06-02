@@ -20,7 +20,7 @@ stages:
   - stage: stage3
     dependsOn: stage1
 
-  - stage: stage2
+  - stage: stage4
     dependsOn: 
      - stage2
      
