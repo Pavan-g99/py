@@ -14,6 +14,7 @@ stages:
     dependsOn: stage1
     jobs:
      - job: job2
+       condition: failed()
        steps:
          - script:  echo "job2 running"
     
