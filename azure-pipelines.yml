@@ -7,15 +7,14 @@ stages:
   - stage: stage1
     jobs:
      - job: job1
+       continueOnError: true
        steps:
          - script: exit 1
-    
-  - stage: stage2
-    condition: always()
-    jobs:
      - job:
+       condition: eq('dependencies.job1.result', 'SuccedededWithIssues)
        steps:
          - script:  echo "job2"
+
     
   
      
