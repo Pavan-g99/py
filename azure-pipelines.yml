@@ -15,7 +15,7 @@ stages:
     jobs:
      - job: job2
        steps:
-         - script:  echo "job2"
+         - script:  echo "job2 running"
     
   
      
