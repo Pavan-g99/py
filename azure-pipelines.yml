@@ -6,24 +6,31 @@
 
                          
 
-parameters:
-  - name: mach
-    type: string
-    default: ubuntu-latest
-    values:
-      - ubuntu-latest
-      - windows-latest
-      - mac 
-  
 pool:
   vmImage: ubuntu-latest
-stages: 
- - stage: stage2 
+stages:
+ - stage: stage1
+   pool:
+    vmImage: windows-latest
+   jobs:
+    - job: "job1"
+      steps:
+       - script: |
+           echo "this is job1"
+        
+ - stage: stage2
    jobs:
      - job: "job2"
-       condition: eq(variables['Build.sourceBranch'],'refs/heads/azure-pipelines')
+       condition: succeeded('job1')
        steps: 
         - script: "echo job2 running"
+ - stage: "stage3"
+   jobs:
+     - job: job3
+       condition: and(succeeded('job2'), ${{parameters.boolen}})
+       steps:
+         - script: |
+             echo "stage 3 with sucess or true or false"
  
        
    
