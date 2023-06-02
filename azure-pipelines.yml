@@ -24,13 +24,13 @@ stages:
  - stage: stage2
    jobs:
      - job: "job2"
-       condition: succeeded('job1')
+       dependsOn: []
        steps: 
         - script: "echo job2 running"
  - stage: "stage3"
    jobs:
      - job: job3
-       condition: or (succeeded('job2'), ${{parameters.boolen}})
+      # condition: or (succeeded('job2'), ${{parameters.boolen}})
        steps:
          - script: |
              echo "stage 3 with sucess or true or false"
