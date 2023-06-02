@@ -3,17 +3,19 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-stages:
-  - stage: stage1
-    jobs:
-     - job: job1
-       continueOnError: true
-       steps:
-         - script: exit 1
-     - job:
-       condition: eq(dependencies.job1.result,'SucceedededWithIssues')
-       steps:
-         - script:  echo "job2"
+
+jobs:
+- job: A
+  displayName: Job A
+  continueOnError: true # next job starts even if this one fails
+  steps:
+  - script: echo Job A ran
+  - script: exit 1
+
+- job: B
+  dependsOn: A
+  condition: eq(dependencies.A.result,'SucceededWithIssues') # targets the result of the previous job 
+  displayName: Job B
 
     
   
