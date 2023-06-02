@@ -21,7 +21,7 @@ stages:
  - stage: stage2 
    jobs:
      - job: "job2"
-       condition: eq(variables['Build.sourceBranch'],'python project/azure-pipelines')
+       condition: eq(variables['Build.sourceBranch'],'refs/heads/azure-pipelines')
        steps: 
         - script: "echo job2 running"
  
