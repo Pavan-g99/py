@@ -9,15 +9,14 @@ stages:
      - job: job1
        steps:
         - task: Maven@4
-          inputs:
-            mavenPomFile: 'pom.xml'
+         
 
     
   - stage: stage2
     dependsOn: stage1
     jobs:
      - job: job2
-       condition: failed('job1')
+       condition: failed()
        steps:
          - script:  echo "job2 running"
     
