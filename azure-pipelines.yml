@@ -8,10 +8,7 @@ stages:
     jobs:
      - job: job1
        steps:
-        - task: Maven@4
-         
-
-
+        - script: exit 1
     
   - stage: stage2
     condition: failed('stage1')
