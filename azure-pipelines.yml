@@ -13,7 +13,7 @@ stages:
   - stage: stage2
     dependsOn: stage1
     jobs:
-     - job:
+     - job: job2
        steps:
          - script:  echo "job2"
     
