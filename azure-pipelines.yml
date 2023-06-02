@@ -5,7 +5,10 @@
 
 
                          
-
+parameters:
+  - name: boolen
+    type: boolean
+    default: true
 pool:
   vmImage: ubuntu-latest
 stages:
