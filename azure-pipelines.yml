@@ -8,10 +8,10 @@ stages:
     jobs:
      - job: job1
        steps:
-        - script: exit 1
+        - script: echo "job"
     
   - stage: stage2
-    condition: failed('stage1')
+    condition: succeeded('stage1')
     jobs:
      - job: job2
        steps:
