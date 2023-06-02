@@ -30,7 +30,7 @@ stages:
  - stage: "stage3"
    jobs:
      - job: job3
-       condition: and(succeeded('job2'), ${{parameters.boolen}})
+       condition: or (succeeded('job2'), ${{parameters.boolen}})
        steps:
          - script: |
              echo "stage 3 with sucess or true or false"
