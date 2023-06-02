@@ -11,13 +11,19 @@ stages:
          - script:  echo "job1"
     
   - stage: stage2
-    dependsOn: []
+    dependsOn: stage1
     jobs:
      - job:
        steps:
          - script:  echo "job2"
     
+  - stage: stage3
+    dependsOn: stage1
 
+  - stage: stage2
+    dependsOn: 
+     - stage2
+     
  
        
    
