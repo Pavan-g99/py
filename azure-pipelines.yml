@@ -11,12 +11,12 @@ stages:
         - task: Maven@4
          
 
+
     
   - stage: stage2
-    dependsOn: stage1
+    condition: failed('job1')
     jobs:
      - job: job2
-       condition: failed()
        steps:
          - script:  echo "job2 running"
     
