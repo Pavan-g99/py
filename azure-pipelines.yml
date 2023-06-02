@@ -19,10 +19,14 @@ stages:
     
   - stage: stage3
     dependsOn: stage1
+    jobs:
+     - job: job3
 
   - stage: stage4
     dependsOn: 
      - stage2
+    jobs:
+     - job: job4
      
  
        
