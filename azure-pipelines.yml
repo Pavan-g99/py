@@ -12,7 +12,7 @@ stages:
        steps:
          - script: exit 1
      - job:
-       
+     
        condition: eq(dependencies.job1.result,'SucceededWithIssues')
        steps:
          - script:  echo "job2"
