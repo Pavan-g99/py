@@ -22,9 +22,10 @@ stages:
            echo "this is job1"
         
  - stage: stage2
+   dependsOn: []
    jobs:
      - job: "job2"
-       dependsOn: []
+       
        steps: 
         - script: "echo job2 running"
  - stage: "stage3"
