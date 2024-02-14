@@ -30,7 +30,8 @@ stages:
         ls
         git clone --single-branch --branch develop https://$(PAT)@$(ELASTIC)    
         ls
-        cd 
+        cd elasticsearch_java
+        ls
 
           
    
