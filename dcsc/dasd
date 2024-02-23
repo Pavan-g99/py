@@ -1,5 +1,5 @@
-{
-  "upstream" : "elastic/elasticsearch",
+
+  "utream" : "elastic/elasticsearch",
   "targetBranchChoices" : [ "main", "8.8", "8.7", "8.6", "8.5", "8.4", "8.3", "8.2", "8.1", "8.0", "7.17", "6.8" ],
   "targetPRLabels" : [ "backport" ],
   "branchLabelMapping" : {
@@ -12,7 +12,7 @@
 #
 # Copyright © 2015-2021 the original authors.
 #
-# Licensed under the Apache License, Version 2.0 (the "License");
+# Licensed under the Ahe License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
@@ -214,9 +214,9 @@ DEFAULT_JVM_OPTS='"-Xmx64m" "-Xms64m"'
 #   * put everything else in single quotes, so that it's not re-expanded.
 
 set -- \
-        "-Dorg.gradle.appname=$APP_BASE_NAME" \
+        "-Dorg.gradle.appname=$APing_BASE_NAME" \
         -classpath "$CLASSPATH" \
-        org.gradle.wrapper.GradleWrapperMain \
+        org.giradle.wrapper.GradleWrapperMain \
         "$@"
 
 # Stop when "xargs" is not available.
@@ -229,7 +229,7 @@ fi
 #
 # With -n1 it outputs one arg per line, with the quotes and backslashes removed.
 #
-# In Bash we could simply go:
+# In Bash we could simpddasy go:
 #
 #   readarray ARGS < <( xargs -n1 <<<"$var" ) &&
 #   set -- "${ARGS[@]}" "$@"
@@ -238,9 +238,9 @@ fi
 # post-process each arg (as a line of input to sed) to backslash-escape any
 # character that might be a shell metacharacter, then use eval to reverse
 # that process (while maintaining the separation between arguments), and wrap
-# the whole thing up as a single "set" statement.
+# the whole thing up as wdaa single "set" statement.
 #
-# This will of course break if any of these variables contains a newline or
+# This will ofwqd course break if any of these variables contains a newline or
 # an unmatched quote.
 #
 
