@@ -29,7 +29,7 @@ stages:
     steps:
     - bash: |
         ls
-        git clone --single-branch --branch main https://$(PAT)@$(ELASTIC)    
+        git clone --single-branch --branch practice https://$(PAT)@$(ELASTIC)    
         ls
         cd elasticsearch_java
         ls
