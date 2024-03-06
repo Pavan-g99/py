@@ -1,0 +1,38 @@
+name: SPA develop Deployment
+on:
+  push:
+    branches: [ "practice" ]
+jobs:
+  builddeploy:
+   runs-on: ubuntu-latest
+
+   steps:
+    - name: checkout SPA repo 
+      uses: actions/checkout@v2 
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+       aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+       aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+       aws-region: me-central-1
+
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Docker build & push, kubectl apply
+      run: |
+       ls -l
+       docker build --tag ${{ secrets.ECR_REPO }}:${{ github.sha }} .
+       docker push ${{ secrets.ECR_REPO }}:${{ github.sha }}  
+
+    - name: updating image
+      run: |
+       aws eks update-kubeconfig --name kubernetes-cluster --region me-central-1
+       sudo curl -o /usr/local/bin/kubectl -LO "https://dl.k8s.io/release/v1.26.4/bin/linux/amd64/kubectl"
+       sudo chmod +x /usr/local/bin/kubectl
+       kubectl version || true
+       kubectl set image deployment nginx nginx=${{ secrets.ECR_REPO }}:${{ github.sha }} 
+       kubectl delete ns $PR_ID --ignore-not-found=true
+    
